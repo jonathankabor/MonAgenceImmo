@@ -43,7 +43,28 @@ class AdminPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="admin.property.edit")
+     * @Route("/admin/property/create", name="admin.property.new")
+     */
+     public function new(Request $request)
+     {
+        $property = new Property();
+        $form = $this->createForm(PropertyType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $this->manager->persist($property);
+                $this->manager->flush();
+                return $this->redirectToRoute('admin.property.index');
+        }
+
+        return  $this->render('admin/property/new.html.twig', [
+            'property'=> $property,
+            'form'=> $form->createView()
+        ]);
+     }
+
+    /**
+     * @Route("/admin/property/{id}", name="admin.property.edit")
      * @param Property $property
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
