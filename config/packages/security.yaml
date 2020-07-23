@@ -36,6 +36,6 @@ security:
 
     encoders:
         App\Entity\User:
-            algorithm: bcryppt
+            algorithm: bcrypt
             cost: 12
 
