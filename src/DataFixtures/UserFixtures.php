@@ -21,7 +21,7 @@ class UserFixtures extends Fixture
     }
 
     /**
-     * @param EntityManagerInterface $manager
+     * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
