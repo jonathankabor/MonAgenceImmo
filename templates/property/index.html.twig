@@ -4,5 +4,10 @@
 {% block body %}
     <div class="jumbotron text-center">
         <h1> Voir tous nos biens</h1>
+
+        {% for property in properties %}
+            {% include 'property/_property.html.twig' %}
+
+        {% endfor %}
     </div>
 {% endblock %}
