@@ -26,7 +26,7 @@ class Option
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Property::class, inversedBy="options")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Property", mappedBy="options")
      */
     private $properties;
 
