@@ -2,17 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Option;
+
 use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 
 class AdminPropertyController extends AbstractController
@@ -74,12 +71,8 @@ class AdminPropertyController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Property $property, Request $request, CacheManager $cacheManager, UploaderHelper $helper)
+    public function edit(Property $property, Request $request)
     {
-        if($property->getImageFile() instanceof UploadedFile)
-        {
-            $cacheManager->remove($helper->asset($property,'imageFile'));
-        }
 
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);

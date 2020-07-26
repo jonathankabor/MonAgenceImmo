@@ -28,3 +28,8 @@ services:
     # please note that last definitions always *replace* previous ones
 
 
+    App\Listener\ImageCacheSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }
+
+
