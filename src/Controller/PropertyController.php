@@ -68,12 +68,8 @@ class PropertyController extends AbstractController
      * @return Response
      */
 
-    public function show(Property $property, string $slug):Response
+    public function show(Property $property, string $slug, Request $request):Response
     {
-        $contact = new Contact();
-        $contact->setProperty($property);
-        $form = $this->createForm(ContactType::class, $contact);
-
 
        if ($property->getSlug() !== $slug)
        {
@@ -82,6 +78,23 @@ class PropertyController extends AbstractController
                'slug'=> $property->getSlug()
            ], 301);
        }
+
+        $contact = new Contact();
+        $contact->setProperty($property);
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+
+            $this->addFlash('success', 'Votre email a bien été envoyé');
+            return $this->redirectToRoute('property.show', [
+                'id' => $property->getId(),
+                'slug'=> $property->getSlug()
+            ]);
+        }
+
         return $this->render('property/show.html.twig', [
             'property'     => $property,
             'current_menu' => 'properties',
