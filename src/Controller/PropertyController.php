@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Property;
 use App\Entity\PropertySearch;
+use App\Form\ContactType;
 use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
@@ -70,6 +70,11 @@ class PropertyController extends AbstractController
 
     public function show(Property $property, string $slug):Response
     {
+        $contact = new Contact();
+        $contact->setProperty($property);
+        $form = $this->createForm(ContactType::class, $contact);
+
+
        if ($property->getSlug() !== $slug)
        {
            return $this->redirectToRoute('property.show', [
@@ -78,8 +83,9 @@ class PropertyController extends AbstractController
            ], 301);
        }
         return $this->render('property/show.html.twig', [
-            'property'=> $property,
-            'current_menu' => 'properties'
+            'property'     => $property,
+            'current_menu' => 'properties',
+            'form'         => $form->createView()
         ]);
     }
 }
