@@ -47,12 +47,6 @@ Encore
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    // enables @babel/preset-env polyfills
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = 3;
-    })
-
     // enables Sass/SCSS support
     //.enableSassLoader()
 
@@ -71,8 +65,9 @@ Encore
     //.addEntry('admin', './assets/js/admin.js')
 ;
 
- var config = Encore.getWebpackConfig();
 
- config.externals.jquery = 'jQuery'
+  var config = Encore.getWebpackConfig();
 
- module.exports = config
+  config.externals.jquery = 'jQuery'
+
+  module.exports = config
