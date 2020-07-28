@@ -110,7 +110,7 @@ class Property
     private $options;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="property", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="property", orphanRemoval=true, cascade={"persist"})
      */
     private $pictures;
 
