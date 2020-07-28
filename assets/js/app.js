@@ -13,6 +13,13 @@ import('../css/app.css');
 import('select2');
 $('select').select2()
 
+let $contactButton = $('#contactButton')
+$contactButton.click(e => {
+    e.preventDefault()
+    $('#contactForm').slideDown();
+    $contactButton.slideUp();
+})
+
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 
 
