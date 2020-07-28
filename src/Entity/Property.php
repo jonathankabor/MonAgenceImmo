@@ -11,14 +11,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 use Symfony\Component\Validator\Constraints\Image;
 
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
  * @UniqueEntity("title")
- * @Vich\Uploadable()
+ *
  */
 class Property
 {
@@ -35,19 +35,6 @@ class Property
      */
     private $id;
 
-
-    /**
-     * @var string|null
-     * @ORM\Column(type="string", length=255)
-     */
-    private $filename;
-
-    /**
-     * @var File|null
-     * @Assert\Image(mimeTypes="image/jpeg")
-     * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
-     */
-    private  $imageFile;
 
     /**
      * @Assert\Length(min=5, max=255)
@@ -122,11 +109,17 @@ class Property
      */
     private $options;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="property", orphanRemoval=true)
+     */
+    private $pictures;
+
 
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->options = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
 
     }
 
@@ -337,41 +330,33 @@ class Property
     }
 
     /**
-     * @return string|null
+     * @return Collection|Picture[]
      */
-    public function getFilename(): ?string
+    public function getPictures(): Collection
     {
-        return $this->filename;
+        return $this->pictures;
     }
 
-    /**
-     * @param string|null $filename
-     * @return Property
-     */
-    public function setFilename(?string $filename): Property
+    public function addPicture(Picture $picture): self
     {
-        $this->filename = $filename;
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setProperty($this);
+        }
+
         return $this;
     }
 
-    /**
-     * @return File|null
-     */
-    public function getImageFile()
+    public function removePicture(Picture $picture): self
     {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param null|File $imageFile
-     * @return Property
-     */
-    public function setImageFile(File $imageFile): Property
-    {
-        $this->imageFile = $imageFile;
-        if($this->imageFile instanceof UploadedFile){
-            $this->updated_at = new \DateTime('now');
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getProperty() === $this) {
+                $picture->setProperty(null);
+            }
         }
+
         return $this;
     }
 
