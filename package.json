@@ -20,6 +20,7 @@
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
         "jquery": "^3.5.1",
+        "places.js": "^1.19.0",
         "select2": "^4.0.13",
         "yarn": "^1.22.4"
     }
