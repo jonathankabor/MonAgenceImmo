@@ -1,9 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title 'Mon Agence Immobilière' %}
+
 {% block body %}
     <div class="jumbotron text-center">
         <h1> Mon Agence Immobilière</h1>
             <p>Bienvenue dans L'agence Immobilière qui répond à vos besoins</p>
+    </div>
+
+    <div class="container">
+        <h2>Les derniers biens</h2>
+        <div class="row flex">
+            {% for property in properties %}
+                <div class="col-3">
+                    {% include 'property/_property.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
