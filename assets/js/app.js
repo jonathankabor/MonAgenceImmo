@@ -34,7 +34,7 @@ $contactButton.click(e => {
         }).then(response => response.json())
             .then(data =>{
                 if (data.success){
-
+                a.parentNode.parentNode.removeChild(a.parentNode)
                 }else{
                     alert(data.error)
                 }

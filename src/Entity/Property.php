@@ -340,6 +340,14 @@ class Property
         return $this->pictures;
     }
 
+    public function getPicture(): ?Picture
+    {
+        if($this->pictures->isEmpty()){
+            return null;
+        }else{
+        return $this->pictures->first();
+        }
+    }
     public function addPicture(Picture $picture): self
     {
         if (!$this->pictures->contains($picture)) {

@@ -43,7 +43,7 @@ class ImageCacheSubscriber implements EventSubscriber
     {
 
         $entity = $args->getEntity();
-        if( $entity instanceof Picture)
+        if( $entity instanceof Property)
         {
             return;
         }
@@ -53,7 +53,7 @@ class ImageCacheSubscriber implements EventSubscriber
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
-        if( $entity instanceof Picture)
+        if( $entity instanceof Property)
         {
             return;
         }
