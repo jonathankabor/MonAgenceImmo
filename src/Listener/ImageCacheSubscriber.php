@@ -2,6 +2,7 @@
 
 namespace  App\Listener;
 
+use App\Entity\Picture;
 use App\Entity\Property;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;

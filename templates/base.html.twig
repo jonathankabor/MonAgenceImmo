@@ -43,14 +43,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
     <script>
         $('select').select2();
+
         let $contactButton = $('#contactButton')
         $contactButton.click(e => {
             e.preventDefault()
             $('#contactForm').slideDown();
             $contactButton.slideUp();
         })
+
     </script>
-       <script src="{{ asset("build/app.js") }}"></script>
+       <script src="{{ asset("build/0.js") }}"></script>
+    
     {% block javascripts %}{% endblock %}
     </body>
 </html>

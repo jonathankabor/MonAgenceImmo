@@ -1,6 +1,11 @@
 {
     "devDependencies": {
+        "@babel/preset-react": "7.0.0",
         "@symfony/webpack-encore": "^0.30.0",
+        "node-sass": "^4.14.1",
+        "sass-loader": "8.0.0",
+        "ts-loader": "5.3.0",
+        "typescript": "^3.9.7",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -13,6 +18,7 @@
     },
     "dependencies": {
         "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
         "jquery": "^3.5.1",
         "select2": "^4.0.13",
         "yarn": "^1.22.4"
