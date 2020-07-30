@@ -17,8 +17,10 @@
             Erreur les champs ne sont pas valides
         </div>
         {% endif %}
+
        <div class="row">
            <div class="col-md-8">
+               <div data-slider>
                {% if property.pictures is empty %}
                    <img src="{{ '/images/empty1.jpeg' | imagine_filter('medium') }}"
                         alt="card-img-top" style="width: 100%; height: auto;">
@@ -28,6 +30,7 @@
                         alt="card-img-top" style="width: 100%; height: auto;">
                    {% endfor %}
                {% endif %}
+               </div>
            </div>
 
            <div class="col-md-4">
