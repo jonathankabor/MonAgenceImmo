@@ -1,4 +1,7 @@
 import Places from  'places.js'
+import Map from './modules/map'
+
+Map.init()
 
 let inputAddress = document.querySelector('#property_adress')
 if (inputAddress !== null){
