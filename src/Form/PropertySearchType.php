@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Option;
 use App\Entity\PropertySearch;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -41,13 +42,10 @@ class PropertySearchType extends AbstractType
                 'choice_label'=> 'name',
                 'multiple'=> true
             ])
-            ->add('address', null, [
+           /** ->add('address', null, [
                 'label'=>false,
-                'required'=>false,
-                'attr'=> [
-                    'id'=> 'search_address'
-                ]
-            ])
+                'required'=>false
+            ])*/
             ->add('distance', ChoiceType::class, [
                 'label'=>false,
                 'required'=>false,

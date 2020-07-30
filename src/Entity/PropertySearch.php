@@ -34,10 +34,11 @@ class PropertySearch
      */
     private $lat;
 
+    /*
     /**
      * @var string|null
      */
-    private $address;
+    /*private $address;*/
 
     /**
      * @var float|null
@@ -149,10 +150,11 @@ class PropertySearch
         $this->lng = $lng;
     }
 
+    /*
     /**
      * @return string|null
      */
-    public function getAddress(): ?string
+   /* public function getAddress(): ?string
     {
         return $this->address;
     }
@@ -160,10 +162,10 @@ class PropertySearch
     /**
      * @param string|null $address
      */
-    public function setAddress(?string $address): void
+    /*public function setAddress(?string $address): void
     {
         $this->address = $address;
-    }
+    }*/
 
 
 }

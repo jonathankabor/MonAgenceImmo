@@ -20,10 +20,10 @@ if (inputAddress !== null){
     })
 }
 
-let searchAdress = document.querySelector('#search_adress')
-if (searchAdress !== null){
+let searchAddress = document.querySelector('#search_address')
+if (searchAddress !== null){
     let place = Places({
-        container: searchAdress
+        container: searchAddress
     })
     place.on('change', e => {
         document.querySelector('#lat').value = e.suggestion.latlng.lat
