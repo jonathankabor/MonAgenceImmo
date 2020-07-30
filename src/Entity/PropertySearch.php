@@ -35,6 +35,11 @@ class PropertySearch
     private $lat;
 
     /**
+     * @var string|null
+     */
+    private $address;
+
+    /**
      * @var float|null
      */
     private $lng;
@@ -142,6 +147,22 @@ class PropertySearch
     public function setLng(?float $lng): void
     {
         $this->lng = $lng;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string|null $address
+     */
+    public function setAddress(?string $address): void
+    {
+        $this->address = $address;
     }
 
 

@@ -41,7 +41,16 @@ class PropertySearchType extends AbstractType
                 'choice_label'=> 'name',
                 'multiple'=> true
             ])
+            ->add('address', null, [
+                'label'=>false,
+                'required'=>false,
+                'attr'=> [
+                    'id'=> 'search_address'
+                ]
+            ])
             ->add('distance', ChoiceType::class, [
+                'label'=>false,
+                'required'=>false,
                 'choices'=>[
                     '10km'=> 10,
                     '1000km'=>1000
