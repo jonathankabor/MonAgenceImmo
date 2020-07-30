@@ -16,7 +16,16 @@ if (inputAddress !== null){
     })
 }
 
-
+let searchAdress = document.querySelector('#search_adress')
+if (searchAdress !== null){
+    let place = Places({
+        container: searchAdress
+    })
+    place.on('change', e => {
+        document.querySelector('#lat').value = e.suggestion.latlng.lat
+        document.querySelector('#lng').value = e.suggestion.latlng.lng
+    })
+}
 
 import $ from 'jquery';
 import('../css/app.css');
