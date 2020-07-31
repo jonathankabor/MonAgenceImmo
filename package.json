@@ -18,9 +18,13 @@
     },
     "dependencies": {
         "babel-preset-env": "^1.7.0",
+        "babel-preset-es2017": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "jquery": "^3.5.1",
+        "leaflet": "^1.6.0",
+        "places.js": "^1.19.0",
         "select2": "^4.0.13",
+        "slick-carousel": "^1.8.1",
         "yarn": "^1.22.4"
     }
 }
